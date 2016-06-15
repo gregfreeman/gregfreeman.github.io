@@ -11,7 +11,7 @@ The Raspberry Pi is a cool inexpensive embedded computer that has enough computa
 
 Why not use a jupyter notebook for running remote raspberry pi code.  In this blog post, I describe one method to use remote jupyter kernels to make experimenting with python IO code very easy.   
 
-## Prereqs:
+## Prereqs
 
 I assume you have a headless raspberry pi with passwordless authentication setup and you know the ip address of the device.   I also assume you have a linux host (development machine), but portions will work on other operating systems.  
 
