@@ -43,7 +43,8 @@ ipykernel is the package that includes ipython kernel that runs from a jupyter n
 
 ### remote_ikernel
 
-[remote_ikernel] (https://bitbucket.org/tdaff/remote_ikernel) is a package that acts as a local kernel for jupyter, but makes a connection to a remote kernel.   This acts as a gateway.  Communications is wrapped in an ssh tunnel. You can install this via source.
+[remote_ikernel](https://bitbucket.org/tdaff/remote_ikernel) 
+is a package that acts as a local kernel for jupyter, but makes a connection to a remote kernel.   This acts as a gateway.  Communications is wrapped in an ssh tunnel. You can install this via source.
 
     hg clone https://bitbucket.org/tdaff/remote_ikernel
     python setyp.py install 
