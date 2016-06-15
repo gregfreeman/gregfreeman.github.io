@@ -1,0 +1,3 @@
+name: Greg Freeman
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
