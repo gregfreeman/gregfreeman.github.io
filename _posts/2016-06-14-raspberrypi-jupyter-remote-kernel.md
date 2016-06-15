@@ -9,7 +9,7 @@ categories: jupyter raspberrypi
 I have built [jupyter notebooks](jupyter.org) into my workflow in many areas.   They are great for integrating documentation, math, plots and code.  Interactive coding also makes proving out concepts fast.
 The Raspberry Pi is a cool inexpensive embedded computer that has enough computation power to run a full linux stack with python. 
 
-Why not use a jupyter notebook for running remote raspberry pi code.  In this blog post, I descibe one method to use remote jupyter kernels to make experimenting with python IO code very easy.   
+Why not use a jupyter notebook for running remote raspberry pi code.  In this blog post, I describe one method to use remote jupyter kernels to make experimenting with python IO code very easy.   
 
 ## Prereqs:
 
@@ -17,11 +17,11 @@ I assume you have a headless raspberry pi with passwordless authentication setup
 
 ## Communication
 
-In this post, I descibe make a remote kernel on the rasperry pi.  This adds an additional communication link in the jupyter framework.   The browser uses http to access the jupyter notebook server.  Jupyter uses ZMQ to access local kernels, in this case ipythonkernel.   ipythonkernel uses ssh to access your remote raspberry pi device and instantiate a local python kernel.  
+In this post, I describe how to make a remote kernel on the rasperry pi.  This adds an additional communication link in the jupyter framework.   The browser uses http to access the jupyter notebook server.  Jupyter uses ZMQ to access local kernels, in this case ipythonkernel.   Ipythonkernel uses ssh to access your remote raspberry pi device and instantiate a local python kernel.  
 
 ![Browser-html-Jupyter-zmq-remote_ikernel-ssh-ipythonkernel](/blog/assets/2016/remote_ikernel_comm.svg)
 
-One we have this setup, we have a special kernel option in jupyter notebook that lets us run a remote notebook on the device.
+Once we have this setup, we have a special kernel option in jupyter notebook that lets us run a remote notebook on the device.
 
 ## Raspberry Pi
 
@@ -37,13 +37,13 @@ Now through ssh we can install conda and pip packages.
     conda install numpy
     pip install ipykernel
 
-ipykernel is the package that includes ipython kernel that runs from a jupyter notebook. 
+Ipykernel is the package that includes ipython kernel that runs from a jupyter notebook. 
 
 ## Host
 
-### remote_ikernel
+### Remote_ikernel
 
-[remote_ikernel](https://bitbucket.org/tdaff/remote_ikernel) 
+[Remote_ikernel](https://bitbucket.org/tdaff/remote_ikernel) 
 is a package that acts as a local kernel for jupyter, but makes a connection to a remote kernel.   This acts as a gateway.  Communications is wrapped in an ssh tunnel. You can install this via source.
 
     hg clone https://bitbucket.org/tdaff/remote_ikernel
@@ -57,11 +57,11 @@ Replace pi@host with the ip address of your device.
           --name="Python RPI" --interface=ssh \
           --host=pi@host --workdir='~' --language=python
 
-The utility creates a kernel file where jupyter knows to look for it 
+The utility creates a kernel file where jupyter knows to look for it.
 
 ~/.local/share/jupyter/kernels
 
-Restart jupyter notebook at you will see another kernel option. 
+Restart jupyter notebook and you will see another kernel option. 
 
 ### Raspberry Pi IO
 
@@ -69,7 +69,7 @@ We can then access raspberry pi io from within a jupyter notebook.
 
 ![screenshot](/blog/assets/2016/remote_rpi_screenshot.png)
 
-Here's a code snippet to peek at I2C registers
+Here is a code snippet to peek at I2C registers.
 
     from __future__ import print_function
     import smbus
@@ -88,11 +88,11 @@ Here's a code snippet to peek at I2C registers
 
 ### Remote file system
 
-Sshfs allows creating a folder that gets synced with your raspberry pi similar to dropbox.   If you write python libraries that you reference from a notebook, this makes it easy to edit code on the fly. 
+Sshfs allows creating a folder that gets synced with your raspberry pi similar to Dropbox.   If you write python libraries that you reference from a notebook, this makes it easy to edit code on the fly. 
 
 [https://help.ubuntu.com/community/SSHFS](https://help.ubuntu.com/community/SSHFS)
 
-There commands install and setup a linked folder.  Replace pi@host and paths.
+These commands install and setup a linked folder.  Replace pi@host and paths.
 
     sudo apt-get install sshfs
     sudo gpasswd -a $USER fuse
